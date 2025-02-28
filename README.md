@@ -4,7 +4,7 @@ This repository contains my submission to the take home exercise. The original i
 
 ## Contents
 - README.md: this file with an overview of the repo
-- submission.ipynb: notebook with code well documented
+- healthcare_transparency.ipynb: notebook with code well documented
 - tic_extract_20250213.csv: payer sample data (the code will download it if not present)
 - hpt_extract_20250213.csv: hospital sample data (the code will download it if not present)
 - combined_hpt_tic.csv: combined data set (the code will generate it)
@@ -32,7 +32,7 @@ First we take a look at the data sets. We confirm that they overlap with 3 payer
 
 Cleaning in both data sets:
 - Delete columns with a single value.
-- For each combination of payer x provider x code, there are multiple entries in both data sets (especially in the payer data set) and the rates still vary significantly (it's not uncommon than more than 2x).
+- For each combination of payer x provider x code, there are multiple entries in both data sets (especially in the payer data set) and the rates still vary significantly (it's not uncommon that by more than 2x).
 - Schemas have differing namings that we consolidate.
 
 Cleaning in hospitals data set:
@@ -53,17 +53,17 @@ We use `taxonomy_filtered_npi_list` to remove entries in the payer data set. We 
 
 After this filtering, we aggregate all entries at the code x payer x hospital level and aggregate rates, to find the minimum, maximum and the median rates.
 
-We finally combine the two data sets and compare the median rates from the payers vs the hospitals data sets. We define a delta variable as the ratio of both, so delta=1 when both data sets coincide. Of all combinatins in the data, delta has a distribution around 1 but it extends from 1/100x to 10x as shown in a plot in the notebook, which means that there is still a significant dispersion and disagreement between both.
+We finally combine the two data sets and compare the median rates from the payers vs the hospitals data sets. We define a delta variable as the ratio of both, so delta=1 when both data sets coincide. Of all combinations in the data, delta has a distribution around 1 but it extends from 1/100x to 10x as shown in a plot in the notebook, which means that there is still a significant dispersion and disagreement between both.
 
 ## Instructions 
 
 To run the code:
 1. Copy the notebook in this repo to your local machine. Either clone the whole repo or simply download the notebook file.
 1. Execute the notebook (run all cells, no need to do any edits at all)
-    2. The two input csv files will be downloaded automatically if they are not present in the same folder as the notebook
-    3. The notebook will output the file `combined_hpt_tic.csv`
-    4. The notebook is well documented step-by-step, this README provides an overview
-    5. No additional python packages are needed
+- The two input csv files will be downloaded automatically (if they are not already present in the same folder as the notebook).
+- The notebook will output the file `combined_hpt_tic.csv`.
+- The notebook is well documented step-by-step, this README provides an overview.
+- No additional python packages are needed
 
 This notebook runs in a fraction of a second.
 
